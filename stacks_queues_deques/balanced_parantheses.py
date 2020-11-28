@@ -1,22 +1,22 @@
 # simple implementation
 def balanced(string):
-    arr=[]
+    stack=[]
     if len(string) % 2 != 0:
         return False
     for each in string:
         if each == '[' or each == '{' or each == '(':
-            arr.append(each)
+            stack.append(each)
         elif each == ']' or each == '}' or each == ')':
-            if len(arr)==0:
+            if len(stack)==0:
                 return False
-            end = arr.pop()
+            end = stack.pop()
             if each == ']' and end != '[':
                 return False
             if each == ')' and end != '(':
                 return False
             if each == '}' and end != '{':
                 return False
-    if len(arr) == 0:
+    if len(stack) == 0:
         return True
     else:
         return False
