@@ -1,3 +1,7 @@
+# take n and return nth fibonacci number
+# fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+# here if n is 8, the function should return 13
+
 def fib_iteration(n):
 
 #   a=0,b=1
