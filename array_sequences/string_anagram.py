@@ -1,3 +1,4 @@
+# string1 is an anagram of string2 if on arranging characters of string1, string2 can be formed.
 def anagram(s1,s2):
     
     s1 = s1.replace(' ','').lower()
