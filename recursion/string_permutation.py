@@ -2,9 +2,7 @@
 
 # For example, given s='abc' the function should return ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
 def permute(s):
-    
     out=[]
-    
     if len(s)==1:
         out = [s]
     else:
@@ -13,5 +11,4 @@ def permute(s):
                     out = out + [let + perm]
     return out
     
-    
-    permute('abc')
+permute('abc')
