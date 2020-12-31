@@ -1,6 +1,6 @@
 # creating a tree with lists
 # not effective and the right way, 
-# using oop is better
+# using oop ( nodes and reference) is better
 
 def binaryTree(root):
     return [root,[],[]]
