@@ -1,3 +1,3 @@
 # dsa
 
-Some common algo problems 
+Some common ds implmentations and algo problems
