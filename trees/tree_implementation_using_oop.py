@@ -17,6 +17,7 @@ class BinaryTree(object):
             t.leftChild = self.leftChild
             self.leftChild = t
             
+#     add new as the right child of root, if a node already exists on right, push it down and make it child's child.
     def insertRight(self,newNode):
         if self.rightChild == None:
             self.rightChild = BinaryTree(newNode)
