@@ -1,6 +1,10 @@
 # Nodes and References Implementation of a Tree
 
-class BinaryTree(object):
+# defining a class:
+# python3 : class BinaryTree()
+# older than python 3: class BinaryTree(object)
+
+class BinaryTree():
     
     def __init__(self,rootObj):
 #         root value is also called key
