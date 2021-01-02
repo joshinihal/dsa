@@ -1,6 +1,6 @@
 import ctypes
 
-class DynamicArray(object):
+class DynamicArray():
     
     
     def __init__(self):
