@@ -1,4 +1,4 @@
-class Queue2Stacks(object):
+class Queue2Stacks():
     
     def __init__(self):
         
