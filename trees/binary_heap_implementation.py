@@ -1,7 +1,7 @@
 # min heap implementation
 # https://en.wikipedia.org/wiki/Binary_heap
 
-# list has 0 at first index(0) i.e. [0,.....]
+# list has a '0' element at first index(0) i.e. [0,.....]
 
 class BinHeap():
     def __init__(self):
@@ -18,11 +18,17 @@ class BinHeap():
                 self.heapList[i] = tmp
             i = i // 2
     
+    
+#     insert by appending at the end of the list
     def insert(self,k):
         self.heapList.append(k)
         self.currentSize = self.currentSize + 1
+#         since inserting at the end disturbs the heap property,
+#         use percUp to push the newly added element upwards to satisy the heap property
         self.percUp(self.currentSize)
         
+#         find the min child for an index ,
+#        if min child is smaller than the parent percdown the parent
     def percDown(self, i):
         while (i*2) <= self.currentSize:
             mc = self.minChild(i)
@@ -45,11 +51,14 @@ class BinHeap():
             else:
                 return i * 2 + 1
     
+#     delete by removing the root since in min heap root is the minimum.
     def delMin():
         rootVal = self.heapList[1]
+#         restore the size
         self.heapList[1] = self.heapList[self.currentSize]
         self.currentSize = self.currentSize - 1
         self.heapList.pop()
+#     since deleting disturbs the heap size, use percDown to put the min at root
         self.percDown(1)
         return rootVal
         
