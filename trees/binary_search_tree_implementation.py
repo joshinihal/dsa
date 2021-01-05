@@ -1,5 +1,5 @@
-# a binary search tree is a binary tree in which node value smaller than parent is stored in left subtree 
-# and node value larger than parent in right subtree
+# a binary search tree is a binary tree in which key value smaller than parent key is stored in left subtree 
+# and key value larger than parent key in right subtree
 
 class TreeNode():
     
@@ -21,3 +21,25 @@ class TreeNode():
     
     def isRightChild(self):
         return self.parent and self.parent.rightChild == self
+    
+    def isRoot(self):
+        return not self.parent
+    
+    def isLeaf(self):
+        return not (self.leftChild or self.rightChild)
+    
+    def hasAnyChildren(self):
+        return self.leftChild or self.rightChild
+    
+    def hasBothChildren(self):
+        return self.leftChild and self.rightChild
+    
+    def replaceNodeData(self, key, value, lc, rc):
+        self.key = key
+        self.payload = value
+        self.leftChild = lc
+        self.rightChild = rc
+        if self.hasLeftChild():
+            self.leftChild.parent = self
+        if self.hasRightChild():
+            self.rightChild.parent = self
