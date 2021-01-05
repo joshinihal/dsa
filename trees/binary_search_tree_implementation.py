@@ -1,3 +1,6 @@
+# a binary search tree is a binary tree in which node value smaller than parent is stored in left subtree 
+# and node value larger than parent in right subtree
+
 class TreeNode():
     
     def __init__(self, key, value, left=None, right=None, parent=None ):
