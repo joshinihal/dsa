@@ -44,7 +44,6 @@ class TreeNode():
         if self.hasRightChild():
             self.rightChild.parent = self
             
-            
 class BinarySearchTree():
     
     def __init__(self):
@@ -125,6 +124,26 @@ class BinarySearchTree():
     def __delitem__(self, key):
         self.delete(key)
         
+    def spliceOut(self):
+        if self.leafChild():
+            if self.isLeftChild():
+                self.parent.leftChild = None
+            else:
+                self.parent.rightChild = None
+        elif self.hasAnyChildren():
+            if self.hasleftChild():
+                if self.isLeftChild():
+                    self.parent.leftChild = self.leftChild
+                else:
+                    self.parent.rightChild = self.leftChild 
+                    self.leftChild.parent = self.parent
+            else:
+                if self.isLeftChild():
+                    self.parent.rightChild = self.leftChild
+                else:
+                    self.parent.rightChild = self.rightChild
+                    self.rightChild.parent = self.parent
+            
     def findSuccessor(self):
         succ = None
         if self.hasRightChild():
@@ -144,3 +163,16 @@ class BinarySearchTree():
         while current.hasLeftChild():
             current = current.leftChild
         return current
+    
+    def remove(self, currentNode):
+        if currentNode.isLeaf():
+            if currentNode.parent.leftChild == currentNode:
+                currentNode.parent.leftChild = None
+            else:
+                currentNode.parent.rightChild = None
+        elif currentNode.hasBothChildren():
+            succ = currentNode.findSuccessor()
+            succ.spliceOut()
+            currentNode.key = succ.key
+            currentNode.payload = succ.payload
+#         else case remaining
