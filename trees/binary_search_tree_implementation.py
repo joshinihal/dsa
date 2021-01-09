@@ -1,6 +1,5 @@
 # a binary search tree is a binary tree in which key value smaller than parent key is stored in left subtree 
 # and key value larger than parent key in right subtree
-
 class TreeNode():
     
     def __init__(self, key, value, left=None, right=None, parent=None ):
@@ -68,12 +67,12 @@ class BinarySearchTree():
             if currentNode.hasLeftChild():
                 self._put(key, val, currentNode.leftChild)
             else:
-                current.leftChild = TreeNode(key, val, parent = currentNode)
+                currentNode.leftChild = TreeNode(key, val, parent = currentNode)
         else:
             if currentNode.hasRightChild():
                 self._put(key, val, currentNode.rightChild)
             else:
-                current.rightChild = TreeNode(key, val, parent = currentNode) 
+                currentNode.rightChild = TreeNode(key, val, parent = currentNode) 
     
     def __setitem__(self, key, val):
         self.put(key, val)
@@ -175,4 +174,31 @@ class BinarySearchTree():
             succ.spliceOut()
             currentNode.key = succ.key
             currentNode.payload = succ.payload
-#         else case remaining
+            
+#             the case where it only has one child
+        else: 
+            if currentNode.hasLeftChild():
+                if currentNode.isLeftChild():
+                    currentNode.leftChild.parent = currentNode.parent
+                    currentNode.parent.leftChild = currentNode.leftChild
+                elif currentNode.isRightChild():
+                    currentNode.leftChild.parent = currentNode.parent
+                    currentNode.parent.rightChild = currentNode.leftChild
+                else:
+                    currentNode.replaceData(currentNode.leftChild.key,
+                                           currentNode.leftChild.payload,
+                                           currentNode.leftChild.leftChild,
+                                           currentNode.leftChild.rightChild)
+            else:
+                if currentNode.isLeftChild():
+                    currentNode.rightChild.parent = currentNode.parent
+                    currentNode.parent.leftChild = currentNode.rightChild
+                elif currentNode.isRightChild():
+                    currentNode.rightChild.parent = currentNode.parent
+                    currentNode.parent.rightChild = currentNode.rightChild
+                else:
+                    currentNode.replaceData(currentNode.rightChild.key,
+                                           currentNode.rightChild.payload,
+                                           currentNode.rightChild.leftChild,
+                                           currentNode.rightChild.rightChild)
+            
