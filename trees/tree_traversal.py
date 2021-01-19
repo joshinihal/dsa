@@ -8,13 +8,13 @@ def pre_order_traversing(tree):
 # recursively traverse left node, then recursively right, then traverse that root node
 def post_order_traversing(tree):
     if tree != None:
-        pre_order_traversing(tree.getLeftChild())
-        pre_order_traversing(tree.getRightChild())
+        post_order_traversing(tree.getLeftChild())
+        post_order_traversing(tree.getRightChild())
         print(tree.getRootVal())
 
 # recursively traverse left node, then traverse that root node, then recursively right
 def in_order_traversing(tree):
     if tree != None:
-        pre_order_traversing(tree.getLeftChild())
+        in_order_traversing(tree.getLeftChild())
         print(tree.getRootVal())        
-        pre_order_traversing(tree.getRightChild())
+        in_order_traversing(tree.getRightChild())
